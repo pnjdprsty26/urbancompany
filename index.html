@@ -18,9 +18,62 @@
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/css/style.css" rel="stylesheet">
+  <style>
+    /* Gaya CSS */
+    #loading {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(255, 255, 255); /* Warna latar belakang dengan transparansi */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999; /* Pastikan di atas konten lain */
+    }
+
+    .loading-wrapper {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .loader {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        border: 5px solid #ccc;
+        border-top-color: #333;
+        animation: spin 1s linear infinite; /* Animasi rotasi */
+    }
+
+    @keyframes spin {
+        to {
+            transform: rotate(360deg); /* Rotasi 360 derajat */
+        }
+    }
+</style>
 </head>
 <body>
  
+  <!-- <div id="loading">
+    <div class="logo"> 
+    </div><br><br>
+    <div class="spinner"></div>
+ </div> -->
+
+ <div id="loading">
+  <!-- Loading Animation -->
+  <a href="index.html"><img src="assets/img/logo/urban-company-logo-kecil.png" alt="" class="img-fluid"></a>
+
+  <div class="loading-wrapper">
+      <div class="loader"></div>
+  </div>
+</div>
+
   <header id="header" class="fixed-top d-flex align-items-center header-transparent">
     <div class="container-fluid container-xl d-flex align-items-center justify-content-center">
       <div class="logo"> 
@@ -674,26 +727,27 @@
   <script src="assets/js/main.js"></script>
 
   <script type="text/javascript">
-    // Tunggu hingga dokumen selesai dimuat
     document.addEventListener('DOMContentLoaded', function() {
-        // Mencegah menu konteks (klik kanan)
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
 
-        // Mencegah akses ke alat pengembang
         document.addEventListener('keydown', function(e) {
-            // Mencegah akses ke Developer Tools dengan tombol F12
             if (e.key === 'F12' || e.keyCode === 123) {
                 e.preventDefault();
             }
-            // Mencegah akses ke Developer Tools dengan klik kanan
             if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 105)) {
                 e.preventDefault();
             }
         });
     });
 </script>
+
+<script>        window.addEventListener("load", function() {
+            setTimeout(function() {
+                document.getElementById("loading").style.display = "none";
+            }, 1000); // Delay dalam milidetik (2000ms = 2 detik)
+        });;</script>
 
 </body>
 
