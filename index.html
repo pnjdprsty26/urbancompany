@@ -672,23 +672,27 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script type="text/javascript">
-    document.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-    });
-</script>
 
-<script type="text/javascript">
-  document.addEventListener('keydown', function(e) {
-      // Hentikan akses ke Developer Tools dengan tombol F12
-      if (e.key === 'F12' || e.keyCode === 123) {
-          e.preventDefault();
-      }
-      // Hentikan akses ke Developer Tools dengan klik kanan
-      if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 105)) {
-          e.preventDefault();
-      }
-  });
+  <script type="text/javascript">
+    // Tunggu hingga dokumen selesai dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+        // Mencegah menu konteks (klik kanan)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // Mencegah akses ke alat pengembang
+        document.addEventListener('keydown', function(e) {
+            // Mencegah akses ke Developer Tools dengan tombol F12
+            if (e.key === 'F12' || e.keyCode === 123) {
+                e.preventDefault();
+            }
+            // Mencegah akses ke Developer Tools dengan klik kanan
+            if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 105)) {
+                e.preventDefault();
+            }
+        });
+    });
 </script>
 
 </body>
